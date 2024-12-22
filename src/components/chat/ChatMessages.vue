@@ -1,5 +1,9 @@
 <template>
-  <div class="flex-1 overflow-y-auto p-4">
+  <div
+    ref="chatRef"
+    class="flex-1 overflow-y-auto p-4"
+  >
+    <!-- ref es una referencia al elemento, es algo de vue -->
     <div class="flex flex-col space-y-2">
       <!-- Messages go here -->
 
@@ -23,14 +27,32 @@
 </template>
 
 <script lang="ts" setup>
-  import ChatBubble from '@/components/chat/ChatBubble.vue'
-  import { IChatMessages } from '../../interfaces/chat-message.interfaces'
+  import { watch, ref, nextTick } from 'vue';
+  import ChatBubble from '@/components/chat/ChatBubble.vue';
+  import type { IChatMessages } from '../../interfaces/chat-message.interfaces';
 
   interface IProps {
-    messages: IChatMessages[]
+    messages: IChatMessages[];
   }
 
-  defineProps<IProps>()
+  const { messages } = defineProps<IProps>();
+
+  const chatRef = ref<HTMLDivElement | null>(null);
+
+  /* Estoy utiliznado un getter */
+
+  watch(
+    () => messages,
+    async () => {
+      await nextTick();
+
+      chatRef.value?.scrollTo({
+        top: chatRef.value.scrollHeight,
+        behavior: 'smooth',
+      });
+    },
+    { deep: true },
+  );
 </script>
 
 <style lang="scss" scoped></style>
