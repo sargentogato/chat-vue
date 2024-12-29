@@ -47,6 +47,11 @@ export const useChat = () => {
     clearInterval( intervalId );
     messages.value.pop();
 
+    /*
+      por que si hago esto clearInterval(interval(mesaages.value)) no funciona?
+
+    */
+
     const { answer, image } = await getResponse();
 
     messages.value.push( {
