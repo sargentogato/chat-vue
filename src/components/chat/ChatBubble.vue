@@ -2,6 +2,7 @@
   <div
     v-if="itsMine"
     class="flex justify-end"
+    data-test-itsMine
   >
     <div class="bg-blue-200 text-black p-2 rounded-lg max-w-xs">{{ message }}</div>
   </div>
