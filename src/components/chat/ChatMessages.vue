@@ -14,8 +14,8 @@
         :image="message.image"
       -->
       <!--
-          ahora con sólo poner v-bind="message" podemos acceder a todos los valores
-          del obeto
+          Cuando ponemos v-bind="message" estamos desestructurando el objeto
+          cuando el hijo lo reciba, podrá acceder a sus propiedades de manera directa
         -->
       <ChatBubble
         v-for="(message, index) in messages"
