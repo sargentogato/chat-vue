@@ -1,15 +1,17 @@
 <template>
   <div class="bg-white p-4 flex items-center">
     <input
+      data-test-input-messageBox
+      @keypress.enter="addMessage"
       type="text"
       placeholder="Type your message..."
       class="flex-1 border rounded-full px-4 py-2 focus:outline-none"
       v-model="message"
-      @keypress.enter="addMessage"
     />
     <button
-      class="bg-blue-500 text-white rounded-full p-2 ml-2 hover:bg-blue-600 focus:outline-none"
+      data-test-btn-messageBox
       @click="addMessage"
+      class="bg-blue-500 text-white rounded-full p-2 ml-2 hover:bg-blue-600 focus:outline-none"
     >
       <svg
         width="20px"
@@ -46,7 +48,7 @@
   import { ref } from 'vue';
 
   /* Aquí usamos un generico. Tendremos un evento textMessage que va a emitir un string */
-  const emit = defineEmits<{ textMessage: [text: string] }>();
+  const emit = defineEmits<{ sendMessage: [text: string] }>();
 
   const message = ref('');
 
@@ -54,7 +56,7 @@
     if (!message.value) return;
 
     /* emitimos un eveto que recoge el padre IndecisionView */
-    emit('textMessage', message.value);
+    emit('sendMessage', message.value);
 
     message.value = '';
   };

@@ -10,7 +10,7 @@ import ChatMessages from '@/components/chat/ChatMessages.vue';
 
     <!-- Message Box -->
     <!-- Cuando se recibe el emit, con @send-message, se ejecuta la función -->
-    <MessageBox @text-message="addMessage" />
+    <MessageBox @send-message="addMessage" />
   </div>
 </template>
 
