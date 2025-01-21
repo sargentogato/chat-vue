@@ -58,10 +58,12 @@
   watch(
     () => messages,
     async () => {
+      console.log('Se disparó el update de messages');
       await nextTick();
+      console.log('Despues de TICK');
 
       chatRef.value?.scrollTo({
-        top: chatRef.value.scrollHeight,
+        top:      chatRef.value.scrollHeight,
         behavior: 'smooth',
       });
     },

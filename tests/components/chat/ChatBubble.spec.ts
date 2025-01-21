@@ -1,4 +1,4 @@
-import { describe, test, expect, exists } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import ChatBubble from '@/components/chat/ChatBubble.vue';
 import { mount } from '@vue/test-utils';
 
@@ -47,7 +47,7 @@ describe( "ChatBubble", () => {
       props: {
         message: message,
         itsMine: false,
-        image: image
+        image:   image
       }
     } );
 

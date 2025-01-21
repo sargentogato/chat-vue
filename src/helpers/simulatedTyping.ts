@@ -19,12 +19,10 @@ let dots: string = "";
 */
 
 export const interval = ( messages: IChatMessages[] ) => {
-
   return setInterval( () => {
     dots = dots.length < 3 ? dots + "." : "";
 
     const counter: number = messages.length;
-    console.log( "interval working" );
 
     messages[counter - 1].message = "escribiendo" + dots;
   }, 500 );
